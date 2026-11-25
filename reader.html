@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Digital Reader | The Power of Human Attraction</title>
+<style>
+:root{--ink:#242424;--gold:#b58a3a;--paper:#fffdf8;--muted:#686868}
+*{box-sizing:border-box}
+body{margin:0;background:#f2efe8;color:var(--ink);font-family:Georgia,serif;line-height:1.7}
+header{background:#242424;color:white;text-align:center;padding:30px 18px}
+header h1{font-size:clamp(1.35rem,4vw,2rem);margin:0 0 5px}
+header p{margin:0;color:#e8d7b4}
+main{max-width:850px;margin:25px auto;padding:0 15px}
+.reader{background:var(--paper);padding:clamp(20px,5vw,48px);border-radius:12px;box-shadow:0 5px 24px #0000000d}
+.label{color:var(--gold);font: bold .78rem Arial,sans-serif;letter-spacing:2px;text-transform:uppercase}
+h2{line-height:1.25}
+.notice{background:#f7f0df;border-left:4px solid var(--gold);padding:14px 16px;margin:20px 0;font-family:Arial,sans-serif;font-size:.93rem}
+.controls{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0}
+button,select{font:inherit;padding:11px 14px;border:1px solid #c9b98f;border-radius:7px;background:white;color:var(--ink)}
+button{cursor:pointer}
+button.primary{background:#242424;color:white;border-color:#242424}
+#status{font: .88rem Arial,sans-serif;color:var(--muted);margin-top:12px}
+footer{text-align:center;padding:25px;font: .9rem Arial,sans-serif}
+a{color:var(--gold)}
+@media(max-width:520px){.controls>*{width:100%}}
+</style>
+</head>
+<body>
+<header>
+<h1>THE POWER OF HUMAN ATTRACTION</h1>
+<p>By Samuel Ntiamoah · Digital Reading Room</p>
+</header>
+<main>
+<section class="reader">
+<div class="label">Reader preview</div>
+<h2 id="chapterTitle">Welcome to the reading room</h2>
+<p id="chapterText">Your digital reading experience is being prepared. This page is the reader interface preview; the complete book text will be added after the secure reading and payment system is connected.</p>
+<div class="notice"><strong>Important:</strong> This is currently a demonstration page. It does not collect payments or provide access to the complete book. Please do not send money through this page.</div>
+<div class="controls">
+<select id="chapterSelect" aria-label="Choose a chapter">
+<option value="welcome">Choose a chapter</option>
+<option value="1">Chapter 1 — Understanding Connection</option>
+<option value="2">Chapter 2 — The Nature of Relationship</option>
+<option value="3">Chapter 3 — The Current (Flower) Relationship</option>
+<option value="4">Chapter 4 — The Fixed (Stone) Relationship</option>
+<option value="5">Chapter 5 — The Tree Figure</option>
+<option value="8">Chapter 8 — Belonging and Bonds: Understanding the Types of Relationships</option>
+</select>
+<button class="primary" id="openBtn">Open chapter</button>
+<button id="bookmarkBtn">☆ Bookmark</button>
+</div>
+<div class="controls">
+<button id="prevBtn">← Previous</button>
+<button id="nextBtn">Next →</button>
+</div>
+<p id="status">Your reading position and bookmark can be saved in this browser for demonstration purposes only.</p>
+</section>
+<p><a href="power-of-human-attraction.html">← Back to the book page</a> · <a href="reading-room.html">Reading Room</a></p>
+</main>
+<footer>© 2026 Samuel Ntiamoah. All rights reserved.</footer>
+<script>
+const chapters = {
+"1":"Understanding Connection",
+"2":"The Nature of Relationship",
+"3":"The Current (Flower) Relationship",
+"4":"The Fixed (Stone) Relationship",
+"5":"The Tree Figure",
+"8":"Belonging and Bonds: Understanding the Types of Relationships"
+};
+const select=document.getElementById('chapterSelect');
+const title=document.getElementById('chapterTitle');
+const text=document.getElementById('chapterText');
+const status=document.getElementById('status');
+let current=localStorage.getItem('sn_reader_chapter')||'welcome';
+let bookmarked=localStorage.getItem('sn_reader_bookmark')||'';
+function showChapter(id){
+ if(!chapters[id]){current='welcome';title.textContent='Welcome to the reading room';text.textContent='Your digital reading experience is being prepared. This page is the reader interface preview; the complete book text will be added after the secure reading and payment system is connected.';select.value='welcome';}
+ else{current=id;title.textContent='Chapter '+id+': '+chapters[id];text.textContent='This chapter has been listed in the reader preview. Its complete manuscript text will be added to the secure reading edition after payment access is configured.';select.value=id;}
+ localStorage.setItem('sn_reader_chapter',current);
+ status.textContent='Saved in this browser: '+(chapters[current]?'Chapter '+current+' — '+chapters[current]:'Welcome page')+'. This is not yet synced across devices.';
+ document.getElementById('bookmarkBtn').textContent=bookmarked===current?'★ Bookmarked':'☆ Bookmark';
+}
+document.getElementById('openBtn').onclick=()=>showChapter(select.value);
+document.getElementById('bookmarkBtn').onclick=()=>{bookmarked=bookmarked===current?'':current;localStorage.setItem('sn_reader_bookmark',bookmarked);showChapter(current);status.textContent=bookmarked?'Bookmark saved in this browser.':'Bookmark removed.';};
+function move(dir){const ids=Object.keys(chapters);let i=ids.indexOf(current);if(i<0)i=0;else i=Math.max(0,Math.min(ids.length-1,i+dir));showChapter(ids[i]);}
+document.getElementById('prevBtn').onclick=()=>move(-1);
+document.getElementById('nextBtn').onclick=()=>move(1);
+showChapter(current);
+</script>
+</body>
+</html>
