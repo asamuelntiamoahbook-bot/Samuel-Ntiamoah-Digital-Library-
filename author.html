@@ -9,21 +9,20 @@
 <style>
 :root{--green:#183c30;--green2:#244c3d;--gold:#c8a96b;--cream:#f8f6f0;--ink:#26312b;--muted:#68736c}
 *{box-sizing:border-box}body{margin:0;background:var(--cream);color:var(--ink);font-family:Georgia,'Times New Roman',serif;line-height:1.75}
-header{background:var(--green);color:#fff;text-align:center;padding:35px 18px}header h1{margin:0;font-size:clamp(1.7rem,5vw,2.6rem);letter-spacing:.08em}header p{margin:7px 0 0;color:#e7c98f;font: .8rem Arial,sans-serif;letter-spacing:.15em}
-nav{background:var(--green2);padding:13px;text-align:center}nav a{color:#fff;text-decoration:none;font: .9rem Arial,sans-serif;margin:0 12px}
-main{max-width:900px;margin:35px auto;padding:0 18px 45px}.card{background:#fff;padding:clamp(24px,5vw,52px);border:1px solid #e9e4d8;box-shadow:0 8px 25px #172d230b;border-radius:8px}
-.eyebrow{font: bold .75rem Arial,sans-serif;color:#98763b;letter-spacing:.2em;text-transform:uppercase}
-h2{color:var(--green);font-size:clamp(1.5rem,4vw,2.2rem);line-height:1.25;margin:10px 0 20px}
-h3{color:var(--green);margin-top:28px}
+header{background:var(--green);color:#fff;text-align:center;padding:35px 18px}header h1{margin:0;font-size:clamp(1.7rem,5vw,2.6rem);letter-spacing:.08em}header p{margin:7px 0 0;color:#e7c98f;font:.8rem Arial,sans-serif;letter-spacing:.15em}
+nav{background:var(--green2);padding:14px 10px;text-align:center;display:flex;justify-content:center;flex-wrap:wrap;gap:12px 25px}nav a{color:#fff;text-decoration:none;font:.9rem Arial,sans-serif}nav a:hover{color:#e7c98f}
+main{max-width:950px;margin:35px auto;padding:0 18px 45px}.card{background:#fff;padding:clamp(24px,5vw,52px);border:1px solid #e9e4d8;box-shadow:0 8px 25px #172d230b;border-radius:8px}
+.eyebrow{font:bold .75rem Arial,sans-serif;color:#98763b;letter-spacing:.2em;text-transform:uppercase}
+h2{color:var(--green);font-size:clamp(1.5rem,4vw,2.2rem);line-height:1.25;margin:10px 0 20px}h3{color:var(--green);margin-top:30px}
 p{margin:0 0 17px}.quote{border-left:4px solid var(--gold);padding:14px 20px;margin:28px 0;background:#f7f2e7;color:var(--green);font-style:italic;font-size:1.15rem}
-.books{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin:15px 0 25px}.books span{background:#f2efe8;padding:12px;border-radius:5px}
-.button{display:inline-block;background:var(--gold);color:#172d23;text-decoration:none;padding:12px 20px;border-radius:3px;font: bold .9rem Arial,sans-serif;margin:8px 8px 0 0}
-footer{background:#122d23;color:#e8eee9;text-align:center;padding:25px;font: .85rem Arial,sans-serif}
+.books{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:15px 0 25px}.books a,.books span{display:block;background:#f2efe8;padding:14px;border-radius:5px;text-decoration:none;color:var(--ink);border:1px solid transparent}.books a:hover{border-color:var(--gold);background:#faf7ef}.books strong{display:block;color:var(--green);margin-bottom:3px}.books small{color:var(--muted);font-size:.88rem}
+.button{display:inline-block;background:var(--gold);color:#172d23;text-decoration:none;padding:12px 20px;border-radius:3px;font:bold .9rem Arial,sans-serif;margin:8px 8px 0 0}
+footer{background:#122d23;color:#e8eee9;text-align:center;padding:25px;font:.85rem Arial,sans-serif}
 </style>
 </head>
 <body>
 <header><h1>SAMUEL NTIAMOAH</h1><p>AUTHOR · WRITER · PUBLISHER</p></header>
-<nav><a href="index.html">Home</a><a href="index.html#books">Books</a><a href="reading-room.html">Reading Room</a></nav>
+<nav aria-label="Main navigation"><a href="index.html">Home</a><a href="index.html#books">Books</a><a href="reading-room.html">Digital Reading Room</a><a href="author.html" aria-current="page">About the Author</a></nav>
 <main><article class="card">
 <p class="eyebrow">About the Author</p>
 <h2>A writer shaped by observation, reflection and the journey of becoming.</h2>
@@ -31,15 +30,15 @@ footer{background:#122d23;color:#e8eee9;text-align:center;padding:25px;font: .85
 <p>His journey as an author began with a decision to take his ideas seriously and keep developing them. From early manuscripts to published books, the process has taught him the value of patience, discipline, revision and the courage to keep working on an idea.</p>
 <p>Rather than treating writing as a collection of conclusions, Samuel approaches it as an invitation to think. His books raise questions, offer frameworks and encourage readers to examine familiar experiences from fresh perspectives.</p>
 <h3>Books and areas of reflection</h3>
-<p>His published and developing works include:</p>
+<p>Explore selected works from the library:</p>
 <div class="books">
-<span><strong>The Power of Human Attraction</strong><br>Human connection and relationships</span>
-<span><strong>The Woman of You</strong><br>Identity and becoming</span>
-<span><strong>Life in Numbers</strong><br>Meaning in life's seasons</span>
-<span><strong>Behind the Hours of Darkness</strong><br>An earlier work</span>
-<span><strong>The Hunt of Life</strong><br>Life's pursuit and discovery</span>
-<span><strong>The Mind of the Living</strong><br>Life, truth and the inner self</span>
-<span><strong>The Battle of If</strong><br>Choices, challenges and becoming</span>
+<a href="power-of-human-attraction.html"><strong>The Power of Human Attraction</strong><small>Human connection and relationships · Explore book</small></a>
+<a href="the-woman-of-you.html"><strong>The Woman of You</strong><small>Identity and becoming · Explore book</small></a>
+<a href="life-in-numbers.html"><strong>Life in Numbers</strong><small>Meaning in life's seasons · Explore book</small></a>
+<span><strong>Behind the Hours of Darkness</strong><small>An earlier work · Preview being prepared</small></span>
+<span><strong>The Hunt of Life</strong><small>Life's pursuit and discovery · Preview being prepared</small></span>
+<span><strong>The Mind of the Living</strong><small>Life, truth and the inner self · Preview being prepared</small></span>
+<span><strong>The Battle of If</strong><small>Choices, challenges and becoming · Preview being prepared</small></span>
 </div>
 <div class="quote">“A book begins as a thought. It becomes meaningful when its ideas enter another person's life and give them something worth considering.”</div>
 <p>Samuel continues to write and develop projects from Accra, Ghana. Through his digital library, he hopes to make his work easier to discover and bring readers closer to the ideas behind each book.</p>
