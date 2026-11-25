@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#183c30">
+<title>Life in Numbers — Reader Preview | Samuel Ntiamoah</title>
+<style>
+:root{--green:#183c30;--gold:#c8a96b;--cream:#f8f6f0;--ink:#26312b}
+*{box-sizing:border-box}body{margin:0;background:var(--cream);color:var(--ink);font:17px/1.7 Georgia,serif}
+header{background:var(--green);color:white;text-align:center;padding:34px 16px}header h1{margin:0;font-size:clamp(1.7rem,5vw,2.5rem);letter-spacing:.06em}header p{color:#e8d6b1;margin:8px 0 0}
+main{max-width:900px;margin:28px auto;padding:0 16px}.notice{background:#fff7e6;border-left:4px solid var(--gold);padding:15px 17px;margin-bottom:22px;font: .9rem/1.6 Arial,sans-serif}
+.layout{display:grid;grid-template-columns: minmax(220px, .8fr) 1.5fr;gap:20px}
+nav,.reader{background:white;border:1px solid #e7e0d5;border-radius:8px;padding:20px}
+nav h2,.reader h2{color:var(--green);margin-top:0}
+nav button{display:block;width:100%;text-align:left;border:0;border-bottom:1px solid #eee8de;background:white;padding:10px 8px;font:inherit;cursor:pointer;color:var(--ink)}
+nav button.active{background:#edf2ed;color:var(--green);font-weight:bold}
+.kicker{font: .72rem Arial,sans-serif;letter-spacing:.13em;text-transform:uppercase;color:#8a7043}
+.reader h2{font-size:1.7rem;margin:8px 0}.subtitle{color:#7b6a4c;font-style:italic}
+.reader p{color:#59645d}.controls{display:flex;justify-content:space-between;gap:10px;margin-top:25px}
+.controls button{background:var(--green);color:white;border:0;border-radius:4px;padding:11px 16px;font: .9rem Arial,sans-serif;cursor:pointer}
+.controls button:disabled{opacity:.35;cursor:not-allowed}
+.progress{font: .78rem Arial,sans-serif;color:#68736c;margin-top:15px}
+footer{text-align:center;padding:30px 15px;font: .85rem Arial,sans-serif}a{color:var(--green)}
+@media(max-width:650px){.layout{grid-template-columns:1fr}nav{max-height:340px;overflow:auto}}
+</style></head>
+<body>
+<header><h1>LIFE IN NUMBERS</h1><p>Reader Preview · Samuel Ntiamoah</p></header>
+<main>
+<div class="notice"><strong>Preview edition:</strong> This page demonstrates the chapter navigation and reading experience. It does not contain the complete manuscript and does not grant paid access. Do not send money through this preview. Your reading position is saved only in this browser on this device.</div>
+<div class="layout">
+<nav aria-label="Book sections"><h2>Contents</h2><div id="chapter-list"></div></nav>
+<section class="reader" aria-live="polite">
+<p class="kicker">Selected section</p><h2 id="chapter-title">Which Number Are You In?</h2><p class="subtitle" id="chapter-subtitle">A guide to the numbers that shape our lives</p>
+<p id="chapter-description">Choose a section from the contents to explore the structure of the book.</p>
+<p class="progress" id="progress"></p>
+<div class="controls"><button id="previous">← Previous</button><button id="next">Next →</button></div>
+</section></div>
+<p style="text-align:center;margin:24px"><a href="life-in-numbers.html">← Back to Life in Numbers</a> &nbsp;|&nbsp; <a href="reading-room.html">Digital Reading Room</a></p>
+</main>
+<footer>© 2026 Samuel Ntiamoah. All Rights Reserved.</footer>
+<script>
+const sections=[
+{title:"Which Number Are You In?",subtitle:"Understanding the seasons of life",description:"An invitation to recognise the season you are living through and understand that every number has a part to play in the journey."},
+{title:"0 — The Empty Circle",subtitle:"Nothing. Everything. The Beginning.",description:"The season of emptiness, invisibility and potential. Zero asks you to look again at what appears to be nothing and consider what may be forming beneath the surface."},
+{title:"1 — The Solitary Stand",subtitle:"Identity. Presence. Standing Alone.",description:"The season of discovering who you are when you stand on your own and learn to recognise your own presence."},
+{title:"2 — The Bend",subtitle:"Adapt. Lean. Make Room.",description:"The season that teaches flexibility, listening and the capacity to bend toward another person's experience without losing yourself."},
+{title:"3 — The Open Side",subtitle:"In Between. Still Becoming. Wide Open.",description:"The middle season: unfinished, open and still taking shape. The open side is not simply a gap; it is also a window for what is yet to come."},
+{title:"4 — The Foundation",subtitle:"Roots. Structure. What Holds.",description:"The season of building foundations patiently, often through work that is quiet, ordinary and unseen."},
+{title:"5 — The Pivot",subtitle:"Turn. Choose. Change Direction.",description:"The season of a turning point, when a choice or change of direction asks for attention and courage."},
+{title:"6 — The Loop",subtitle:"Hold. Protect. Give.",description:"The season of responsibility, care and giving. It also asks who is holding you while you hold others."},
+{title:"7 — The Sharp Turn",subtitle:"Decide. Commit. Cut Clean.",description:"The season of decision. It asks you to stop circling what must be chosen and to accept the responsibility that comes with commitment."},
+{title:"8 — The Balance",subtitle:"Above. Below. The Same.",description:"The season of balance: learning to notice imbalance and return to the centre through ongoing adjustment."},
+{title:"9 — The Full Circle With a Tail",subtitle:"Complete. Continuing. Carried Forward.",description:"The season of wholeness, looking back across the road travelled and carrying what has been learned into what comes next."},
+{title:"Afterword",subtitle:"The journey continues",description:"The closing reflection of the book."},
+{title:"About the Author",subtitle:"Samuel Ntiamoah",description:"Learn more about the author and his writing."}
+];
+let current=0;const list=document.getElementById("chapter-list");
+function show(index){current=Math.max(0,Math.min(sections.length-1,index));const s=sections[current];document.getElementById("chapter-title").textContent=s.title;document.getElementById("chapter-subtitle").textContent=s.subtitle;document.getElementById("chapter-description").textContent=s.description;document.getElementById("progress").textContent="Section "+(current+1)+" of "+sections.length+" · Preview position saved on this device";localStorage.setItem("lifeInNumbersPreviewSection",String(current));[...list.children].forEach((b,i)=>b.classList.toggle("active",i===current));document.getElementById("previous").disabled=current===0;document.getElementById("next").disabled=current===sections.length-1}
+sections.forEach((s,i)=>{const b=document.createElement("button");b.textContent=s.title;b.addEventListener("click",()=>show(i));list.appendChild(b)});
+document.getElementById("previous").addEventListener("click",()=>show(current-1));document.getElementById("next").addEventListener("click",()=>show(current+1));
+const saved=Number(localStorage.getItem("lifeInNumbersPreviewSection"));show(Number.isInteger(saved)&&saved>=0&&saved<sections.length?saved:0);
+</script></body></html>
